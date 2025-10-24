@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExamBolt - Loading</title>
+<style>
+    body {
+        margin: 0; background: #fff; display: flex;
+        justify-content: center; align-items: center;
+        height: 100vh; font-family: Poppins, sans-serif;
+        flex-direction: column;
+    }
+    .logo {
+        font-size: 38px; 
+        font-weight: 700; 
+        color: #000096;
+        letter-spacing: 1px;
+        border-radius: 15px;
+        border: 1px solid #fff;
+        box-shadow: 0px 0px 10px 1px #0002;
+        overflow: hidden;
+        padding: 10px 15px;
+    }
+
+    img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .bar {
+        width: 150px;
+        height: 6px;
+        margin-top: 20px;
+        background: #ddd;
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+    }
+    .bar::after {
+        content: "";
+        width: 0%;
+        height: 100%;
+        background: #001B5D;
+        position: absolute;
+        animation: load 5s linear forwards;
+    }
+    @keyframes load {
+        0% { width: 0; }
+        100% { width: 100%; }
+    }
+</style>
+</head>
+<body>
+
+<div class="logo">
+    <img src="icon.svg" alt="Exam Bolt Logo">
+</div>
+<div class="bar"></div>
+
+<script>
+    setTimeout(() => {
+        window.location.href = "onboarding.html"; // Next screen
+    }, 5000);
+</script>
+
+</body>
+</html>

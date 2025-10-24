@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OTP Verification — ExamBolt</title>
+
+<style>
+  :root {
+    --primary: #001B5D;
+    --bg: #ffffff;
+    --text: #111;
+    --subtext: #777;
+    --error: #d32f2f;
+  }
+  * { box-sizing: border-box; font-family: "Poppins", sans-serif; }
+  body {
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:var(--bg);
+    min-height:100vh;
+    padding:22px;
+  }
+  .container {
+    max-width:420px;
+    width:100%;
+    text-align:center;
+  }
+  h2 {
+    font-size:24px;
+    color:var(--primary);
+    margin-bottom:6px;
+  }
+  p {
+    font-size:14px;
+    color:var(--subtext);
+    margin-bottom:20px;
+  }
+  .otp-inputs {
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    margin-bottom:20px;
+  }
+  .otp-inputs input {
+    width:50px;
+    height:56px;
+    font-size:22px;
+    text-align:center;
+    border:2px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    transition:border 0.2s;
+  }
+  .otp-inputs input:focus {
+    border-color: var(--primary);
+  }
+  button {
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:var(--primary);
+    color:#fff;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .resend {
+    margin-top:14px;
+    font-size:13px;
+    color:var(--primary);
+    cursor:pointer;
+  }
+  .timer {
+    color:var(--error);
+    font-size:13px;
+  }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+  <h2>Verify OTP</h2>
+  <p>Enter the 6-digit code sent to your email</p>
+
+  <div class="otp-inputs">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+  </div>
+
+  <button id="verifyBtn">Verify</button>
+
+  <div class="timer" id="timer">Resend available in 60s</div>
+  <div class="resend" id="resendBtn" style="display:none">Resend OTP</div>
+</div>
+
+
+<script>
+const inputs = document.querySelectorAll(".otp-inputs input");
+inputs.forEach((input, index) => {
+  input.addEventListener("input", () => {
+    if (input.value && index < 5) {
+      inputs[index + 1].focus();
+    }
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Backspace" && index > 0 && !input.value) {
+      inputs[index - 1].focus();
+    }
+  });
+});
+
+// Timer Logic
+let timeLeft = 60;
+let timer = setInterval(() => {
+  timeLeft--;
+  document.getElementById("timer").textContent = `Resend available in ${timeLeft}s`;
+
+  if(timeLeft <= 0){
+    clearInterval(timer);
+    document.getElementById("timer").style.display = "none";
+    document.getElementById("resendBtn").style.display = "inline-block";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
