@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000096">
+    <title>ExamBolt - Ace Every Exam</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ROOT CONTAINER -->
+    <div id="app">
+        
+        <!-- SPLASH SCREEN -->
+        <div id="splash" class="screen active">
+            <div class="splash-content">
+                <div class="logo-container">
+                    <div class="logo-bolt">⚡</div>
+                    <h1 class="logo-text">ExamBolt</h1>
+                </div>
+                <p class="tagline">Lightning-fast exam prep</p>
+                <div class="loader">
+                    <div class="loader-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ONBOARDING SCREEN -->
+        <div id="onboarding" class="screen">
+            <div class="onboarding-container">
+                <div class="slides-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="onboarding-slide active" data-slide="0">
+                        <div class="slide-visual">
+                            <div class="visual-icon">🎯</div>
+                        </div>
+                        <h2 class="slide-title">Ace Every Exam</h2>
+                        <p class="slide-text">Smart study plans tailored to your goals. Practice thousands of questions across all subjects.</p>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="onboarding-slide" data-slide="1">
+                        <div class="slide-visual">
+                            <div class="visual-icon">📊</div>
+                        </div>
+                        <h2 class="slide-title">Track Progress</h2>
+                        <p class="slide-text">Real-time analytics show your strengths and weaknesses. Watch your knowledge grow daily.</p>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="onboarding-slide" data-slide="2">
+                        <div class="slide-visual">
+                            <div class="visual-icon">🤝</div>
+                        </div>
+                        <h2 class="slide-title">Join the Community</h2>
+                        <p class="slide-text">Connect with thousands of students. Share tips, compete on leaderboards, learn together.</p>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="onboarding-slide" data-slide="3">
+                        <div class="slide-visual">
+                            <div class="visual-icon">⭐</div>
+                        </div>
+                        <h2 class="slide-title">Go Premium</h2>
+                        <p class="slide-text">Unlock unlimited practice tests, detailed explanations, and personalized coaching.</p>
+                    </div>
+                </div>
+
+                <div class="onboarding-controls">
+                    <div class="slide-indicators">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                        <span class="dot" data-index="3"></span>
+                    </div>
+                    <button id="onboarding-next" class="btn-primary">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- AUTH SCREEN -->
+        <div id="auth" class="screen">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h1 class="auth-title">Welcome Back</h1>
+                    <p class="auth-subtitle">Continue your learning journey</p>
+                </div>
+
+                <!-- LOGIN / SIGNUP CREDENTIALS -->
+                <div id="auth-credentials" class="auth-step active">
+                    <form id="auth-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="auth-email">Email or Phone</label>
+                            <input type="text" id="auth-email" name="email" placeholder="you@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="auth-password">Password</label>
+                            <input type="password" id="auth-password" name="password" placeholder="••••••••" required>
+                        </div>
+
+                        <!-- Show only in signup mode -->
+                        <div class="form-group" id="confirm-password-group" style="display: none;">
+                            <label for="auth-confirm-password">Confirm Password</label>
+                            <input type="password" id="auth-confirm-password" name="confirm_password" placeholder="••••••••">
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="#" id="forgot-password" class="link-text">Forgot password?</a>
+                            <button type="submit" class="btn-primary" id="auth-submit">Log In</button>
+                        </div>
+                    </form>
+
+                    <div class="auth-toggle">
+                        <span id="toggle-text">Don't have an account?</span>
+                        <a href="#" id="toggle-mode">Sign Up</a>
+                    </div>
+                </div>
+
+                <!-- OTP VERIFICATION -->
+                <div id="auth-otp" class="auth-step">
+                    <div class="otp-header">
+                        <h2 class="otp-title">Verify Your Account</h2>
+                        <p class="otp-subtitle">Enter the 4-digit code sent to <span id="otp-contact"></span></p>
+                    </div>
+
+                    <form id="otp-form" class="otp-form">
+                        <div class="otp-inputs">
+                            <input type="text" maxlength="1" class="otp-input" data-index="0" inputmode="numeric" pattern="[0-9]">
+                            <input type="text" maxlength="1" class="otp-input" data-index="1" inputmode="numeric" pattern="[0-9]">
+                            <input type="text" maxlength="1" class="otp-input" data-index="2" inputmode="numeric" pattern="[0-9]">
+                            <input type="text" maxlength="1" class="otp-input" data-index="3" inputmode="numeric" pattern="[0-9]">
+                        </div>
+
+                        <button type="submit" class="btn-primary">Verify</button>
+
+                        <div class="resend-container">
+                            <span>Didn't receive code?</span>
+                            <a href="#" id="resend-otp">Resend</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROFILE SETUP SCREEN -->
+        <div id="profile-setup" class="screen">
+            <div class="setup-container">
+                <div class="setup-header">
+                    <h1 class="setup-title">Complete Your Profile</h1>
+                    <p class="setup-subtitle">Help us personalize your experience</p>
+                </div>
+
+                <form id="profile-form" class="setup-form">
+                    <div class="form-group">
+                        <label for="user-name">Full Name</label>
+                        <input type="text" id="user-name" name="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="education-level">Education Level</label>
+                        <select id="education-level" name="education" required>
+                            <option value="">Select level</option>
+                            <option value="high-school">High School</option>
+                            <option value="undergraduate">Undergraduate</option>
+                            <option value="postgraduate">Postgraduate</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="target-exam">Target Exam</label>
+                        <input type="text" id="target-exam" name="exam" placeholder="e.g., SAT, JAMB, WAEC" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjects">Subjects (comma-separated)</label>
+                        <input type="text" id="subjects" name="subjects" placeholder="Math, Physics, Chemistry">
+                    </div>
+
+                    <button type="submit" class="btn-primary">Continue</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- SUBSCRIPTION SCREEN -->
+        <div id="subscription" class="screen">
+            <div class="subscription-container">
+                <div class="subscription-header">
+                    <h1 class="subscription-title">Choose Your Plan</h1>
+                    <p class="subscription-subtitle">Start free, upgrade anytime</p>
+                </div>
+
+                <div class="plans">
+                    <div class="plan-card" data-plan="free">
+                        <div class="plan-badge">Current</div>
+                        <h3 class="plan-name">Free</h3>
+                        <div class="plan-price">
+                            <span class="price">₦0</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ 50 practice questions/day</li>
+                            <li>✓ Basic progress tracking</li>
+                            <li>✓ Community access</li>
+                            <li>✗ Full explanations</li>
+                            <li>✗ Unlimited questions</li>
+                        </ul>
+                        <button class="btn-secondary selected">Current Plan</button>
+                    </div>
+
+                    <div class="plan-card premium" data-plan="premium">
+                        <div class="plan-badge hot">Popular</div>
+                        <h3 class="plan-name">Premium</h3>
+                        <div class="plan-price">
+                            <span class="price">₦2,000</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ Unlimited questions</li>
+                            <li>✓ Detailed explanations</li>
+                            <li>✓ Advanced analytics</li>
+                            <li>✓ Personalized study plans</li>
+                            <li>✓ Offline mode</li>
+                        </ul>
+                        <button class="btn-primary">Upgrade Now</button>
+                    </div>
+                </div>
+
+                <button id="skip-subscription" class="btn-text">Skip for now</button>
+            </div>
+        </div>
+
+        <!-- MAIN APP / DASHBOARD -->
+        <div id="dashboard" class="screen">
+            <!-- Tab Content Container -->
+            <div class="tab-content">
+                
+                <!-- HOME TAB -->
+                <div id="home-tab" class="tab-pane active">
+                    <div class="dashboard-header">
+                        <div class="greeting">
+                            <h2>Hello, <span id="user-display-name">Student</span> 👋</h2>
+                            <p class="date" id="current-date">Wednesday, December 17</p>
+                        </div>
+                        <div class="header-actions">
+                            <button class="icon-btn">🔔</button>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-body">
+                        <!-- Progress Summary -->
+                        <div class="card progress-card">
+                            <h3 class="card-title">Your Progress</h3>
+                            <div class="progress-stats">
+                                <div class="stat">
+                                    <div class="stat-value">67%</div>
+                                    <div class="stat-label">Overall</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-label">Day Streak</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">248</div>
+                                    <div class="stat-label">Questions</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="quick-actions">
+                            <button class="action-card primary">
+                                <span class="action-icon">🚀</span>
+                                <span class="action-text">Start Practice</span>
+                            </button>
+                            <button class="action-card">
+                                <span class="action-icon">📝</span>
+                                <span class="action-text">Continue Plan</span>
+                            </button>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="card">
+                            <h3 class="card-title">Recent Activity</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon">✅</div>
+                                    <div class="activity-content">
+                                        <p class="activity-title">Completed Physics Quiz</p>
+                                        <p class="activity-meta">85% • 2 hours ago</p>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">📖</div>
+                                    <div class="activity-content">
+                                        <p class="activity-title">Studied Chemistry Ch. 4</p>
+                                        <p class="activity-meta">45 min • Yesterday</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STUDY TAB -->
+                <div id="study-tab" class="tab-pane">
+                    <div class="tab-header">
+                        <h2 class="tab-title">Study</h2>
+                        <button class="icon-btn">🔍</button>
+                    </div>
+                    <div class="tab-body">
+                        <div class="subjects-grid">
+                            <div class="subject-card">
+                                <div class="subject-icon">🧮</div>
+                                <h3 class="subject-name">Mathematics</h3>
+                                <p class="subject-progress">45 of 100 topics</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-icon">⚛️</div>
+                                <h3 class="subject-name">Physics</h3>
+                                <p class="subject-progress">32 of 80 topics</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-icon">🧪</div>
+                                <h3 class="subject-name">Chemistry</h3>
+                                <p class="subject-progress">28 of 90 topics</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 31%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-icon">🌍</div>
+                                <h3 class="subject-name">Biology</h3>
+                                <p class="subject-progress">15 of 70 topics</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 21%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANALYTICS TAB -->
+                <div id="analytics-tab" class="tab-pane">
+                    <div class="tab-header">
+                        <h2 class="tab-title">Analytics</h2>
+                    </div>
+                    <div class="tab-body">
+                        <div class="analytics-grid">
+                            <div class="analytics-card">
+                                <div class="analytics-icon">📈</div>
+                                <div class="analytics-value">248</div>
+                                <div class="analytics-label">Questions Answered</div>
+                            </div>
+                            <div class="analytics-card">
+                                <div class="analytics-icon">🎯</div>
+                                <div class="analytics-value">73%</div>
+                                <div class="analytics-label">Accuracy Rate</div>
+                            </div>
+                            <div class="analytics-card">
+                                <div class="analytics-icon">🔥</div>
+                                <div class="analytics-value">12</div>
+                                <div class="analytics-label">Day Streak</div>
+                            </div>
+                            <div class="analytics-card">
+                                <div class="analytics-icon">⏱️</div>
+                                <div class="analytics-value">18h</div>
+                                <div class="analytics-label">Study Time</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3 class="card-title">Subject Performance</h3>
+                            <div class="performance-list">
+                                <div class="performance-item">
+                                    <span class="subject-label">Mathematics</span>
+                                    <div class="performance-bar">
+                                        <div class="performance-fill" style="width: 85%;"></div>
+                                        <span class="performance-value">85%</span>
+                                    </div>
+                                </div>
+                                <div class="performance-item">
+                                    <span class="subject-label">Physics</span>
+                                    <div class="performance-bar">
+                                        <div class="performance-fill" style="width: 72%;"></div>
+                                        <span class="performance-value">72%</span>
+                                    </div>
+                                </div>
+                                <div class="performance-item">
+                                    <span class="subject-label">Chemistry</span>
+                                    <div class="performance-bar">
+                                        <div class="performance-fill" style="width: 68%;"></div>
+                                        <span class="performance-value">68%</span>
+                                    </div>
+                                </div>
+                                <div class="performance-item">
+                                    <span class="subject-label">Biology</span>
+                                    <div class="performance-bar">
+                                        <div class="performance-fill" style="width: 79%;"></div>
+                                        <span class="performance-value">79%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROFILE TAB -->
+                <div id="profile-tab" class="tab-pane">
+                    <div class="tab-header">
+                        <h2 class="tab-title">Profile</h2>
+                    </div>
+                    <div class="tab-body">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <span id="avatar-initial">S</span>
+                            </div>
+                            <h3 id="profile-name">Student Name</h3>
+                            <p id="profile-email">student@example.com</p>
+                        </div>
+
+                        <div class="profile-info">
+                            <div class="info-item">
+                                <span class="info-label">Target Exam</span>
+                                <span class="info-value" id="profile-exam">SAT</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Education Level</span>
+                                <span class="info-value" id="profile-education">High School</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Member Since</span>
+                                <span class="info-value" id="profile-joined">Dec 2024</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-actions">
+                            <button class="profile-btn">
+                                <span>⚙️</span> Settings
+                            </button>
+                            <button class="profile-btn">
+                                <span>📊</span> Subscription
+                            </button>
+                            <button class="profile-btn">
+                                <span>❓</span> Help & Support
+                            </button>
+                            <button id="logout-btn" class="profile-btn danger">
+                                <span>🚪</span> Log Out
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Navigation -->
+            <nav class="bottom-nav">
+                <button class="nav-item active" data-tab="home">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-label">Home</span>
+                </button>
+                <button class="nav-item" data-tab="study">
+                    <span class="nav-icon">📚</span>
+                    <span class="nav-label">Study</span>
+                </button>
+                <button class="nav-item" data-tab="analytics">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-label">Analytics</span>
+                </button>
+                <button class="nav-item" data-tab="profile">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-label">Profile</span>
+                </button>
+            </nav>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

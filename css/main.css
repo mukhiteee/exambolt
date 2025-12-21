@@ -1,0 +1,266 @@
+/* ==========================================
+   EXAMBOLT - SPLASH SCREEN STYLES
+   Modern, Animated, Professional
+   ========================================== */
+
+/* ========== RESET ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0000CC;
+    color: white;
+}
+
+/* ========== SPLASH SCREEN ========== */
+#splash-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    
+    /* Animated gradient background */
+    background: linear-gradient(135deg, #0000CC 0%, #0000AA 50%, #0000CC 100%);
+    background-size: 200% 200%;
+    animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glowing orbs in background */
+#splash-screen::before,
+#splash-screen::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+}
+
+#splash-screen::before {
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.2);
+    top: -100px;
+    right: -100px;
+    animation-delay: 0s;
+}
+
+#splash-screen::after {
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.15);
+    bottom: -80px;
+    left: -80px;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -30px) scale(1.1); }
+}
+
+/* ========== SPLASH CONTENT ========== */
+.splash-content {
+    text-align: center;
+    z-index: 1;
+    position: relative;
+}
+
+/* ========== LOGO CONTAINER ========== */
+.logo-container {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 40px;
+    position: relative;
+    
+    /* Appear animation */
+    animation: scaleIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Pulsing glow ring */
+.logo-container::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+    animation: pulse 2s ease-in-out infinite;
+    animation-delay: 0.8s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Thunder Bolt Icon */
+.thunder-bolt {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.5));
+    animation: boltGlow 2s ease-in-out infinite;
+    animation-delay: 0.8s;
+}
+
+@keyframes boltGlow {
+    0%, 100% {
+        filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.5));
+        transform: translateY(0);
+    }
+    50% {
+        filter: drop-shadow(0 15px 40px rgba(255, 255, 255, 0.8));
+        transform: translateY(-5px);
+    }
+}
+
+/* ========== APP NAME ========== */
+.app-name {
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+    
+    /* Gradient text */
+    background: linear-gradient(135deg, #FFFFFF 0%, #E0E0FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    /* Slide up animation */
+    animation: slideUp 0.8s ease-out forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+    
+    /* Text shadow for depth */
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== TAGLINE ========== */
+.tagline {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 60px;
+    
+    /* Fade in animation */
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.8s;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 0.9;
+        transform: translateY(0);
+    }
+}
+
+/* ========== LOADING CONTAINER ========== */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Fade in animation */
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 1.2s;
+    opacity: 0;
+}
+
+/* ========== LOADING SPINNER ========== */
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Add subtle shadow to spinner */
+.loading-spinner {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 480px) {
+    .app-name {
+        font-size: 48px;
+    }
+    
+    .tagline {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+    
+    .logo-container {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* ========== SCREEN UTILITIES ========== */
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
