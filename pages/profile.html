@@ -1,0 +1,127 @@
+<!-- PROFILE SCREEN -->
+<div id="profile-screen" class="page">
+    
+    <!-- Header -->
+    <div class="profile-header">
+        <h2 class="profile-title">Profile</h2>
+    </div>
+    
+    <!-- Profile Content -->
+    <div class="profile-content">
+        
+        <!-- User Info Card -->
+        <div class="user-info-card">
+            <div class="user-avatar-large">
+                <img src="data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='40' fill='%230000CC'/%3E%3Ctext x='40' y='52' text-anchor='middle' fill='white' font-size='28' font-weight='bold'%3EAS%3C/text%3E%3C/svg%3E" alt="Profile">
+            </div>
+            <h3 class="user-name" id="profile-user-name">Alex Student</h3>
+            <p class="user-institution">University of Technology</p>
+            <div class="user-badges">
+                <span class="badge">Comp Sci</span>
+                <span class="badge">200 Lvl</span>
+            </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="action-btn secondary">Settings</button>
+            <button class="action-btn secondary">CGPA Calc</button>
+        </div>
+        
+        <!-- CGPA Card -->
+        <div class="cgpa-card">
+            <p class="cgpa-label">CURRENT CGPA</p>
+            <h2 class="cgpa-value">4.92</h2>
+            <span class="cgpa-class">Second Class Upper</span>
+        </div>
+        
+        <!-- Add Grade Card -->
+        <div class="add-grade-card">
+            <h3 class="card-title">Add Course Grade</h3>
+            <input type="text" placeholder="Code (e.g. CSC101)" class="grade-input">
+            <button class="add-grade-btn">+ Add Grade</button>
+        </div>
+        
+        <!-- Premium Plan Card -->
+        <div class="premium-card">
+            <div class="premium-header">
+                <div class="premium-info">
+                    <span class="premium-icon">👑</span>
+                    <div>
+                        <h4>Premium Plan</h4>
+                        <p>Next billing: Nov 24</p>
+                    </div>
+                </div>
+                <button class="manage-btn">Manage</button>
+            </div>
+        </div>
+        
+        <!-- Warning -->
+        <div class="warning-card">
+            <span class="warning-icon">⚠️</span>
+            <div class="warning-text">
+                <h4>Academic Profile Locked</h4>
+                <p>Department and Level cannot be changed until the current semester ends. Contact admin for help.</p>
+            </div>
+        </div>
+        
+        <!-- Menu List -->
+        <div class="menu-list">
+            <button class="menu-item">
+                <span class="menu-icon">🔔</span>
+                <span class="menu-text">Notifications</span>
+                <span class="menu-arrow">→</span>
+            </button>
+            
+            <button class="menu-item">
+                <span class="menu-icon">🔒</span>
+                <span class="menu-text">Privacy & Security</span>
+                <span class="menu-arrow">→</span>
+            </button>
+            
+            <button class="menu-item">
+                <span class="menu-icon">🌙</span>
+                <span class="menu-text">Dark Mode</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </button>
+        </div>
+        
+        <!-- Logout Button -->
+        <button class="logout-btn" id="logout-btn">
+            <span>🚪</span>
+            Log Out
+        </button>
+        
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item" data-nav="home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </button>
+        
+        <button class="nav-item" data-nav="study">
+            <span class="nav-icon">📚</span>
+            <span class="nav-label">Study</span>
+        </button>
+        
+        <button class="nav-fab" id="fab-button">
+            <span class="fab-icon">+</span>
+        </button>
+        
+        <button class="nav-item" data-nav="analytics">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Stats</span>
+        </button>
+        
+        <button class="nav-item active" data-nav="profile">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Profile</span>
+        </button>
+    </nav>
+    
+</div>

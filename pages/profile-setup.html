@@ -1,7 +1,82 @@
 <!-- PROFILE SETUP SCREEN -->
 <div id="profile-setup-screen" class="page">
-    <div class="content">
-        <h2>Profile Setup</h2>
-        <p>Coming soon...</p>
+    <div class="setup-container">
+        
+        <!-- Header -->
+        <div class="setup-header">
+            <h1 class="setup-title">Complete Your Profile</h1>
+            <p class="setup-subtitle">Help us personalize your exam prep experience</p>
+            
+            <!-- Progress Bar -->
+            <div class="progress-wrapper">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="setup-progress"></div>
+                </div>
+                <span class="progress-text" id="progress-text">0% Complete</span>
+            </div>
+        </div>
+        
+        <!-- Form Card -->
+        <div class="setup-card">
+            
+            <!-- Full Name -->
+            <div class="input-group">
+                <label for="setup-name">FULL NAME *</label>
+                <input 
+                    type="text" 
+                    id="setup-name" 
+                    class="setup-input" 
+                    placeholder="John Doe"
+                    required>
+            </div>
+            
+            <!-- Education Level -->
+            <div class="input-group">
+                <label for="setup-education">EDUCATION LEVEL *</label>
+                <select id="setup-education" class="setup-input" required>
+                    <option value="">Select your level</option>
+                    <option value="secondary">Secondary School (SS1-SS3)</option>
+                    <option value="undergraduate">Undergraduate</option>
+                    <option value="postgraduate">Postgraduate</option>
+                    <option value="professional">Professional Certification</option>
+                </select>
+            </div>
+            
+            <!-- Target Exam -->
+            <div class="input-group">
+                <label for="setup-exam">TARGET EXAM *</label>
+                <input 
+                    type="text" 
+                    id="setup-exam" 
+                    class="setup-input" 
+                    placeholder="e.g., JAMB, WAEC, SAT, IELTS"
+                    required>
+            </div>
+            
+            <!-- Subjects (Optional) -->
+            <div class="input-group">
+                <label for="setup-subjects">SUBJECTS (Optional)</label>
+                <input 
+                    type="text" 
+                    id="setup-subjects" 
+                    class="setup-input" 
+                    placeholder="e.g., Mathematics, Physics, Chemistry">
+                <small class="input-hint">Separate multiple subjects with commas</small>
+            </div>
+            
+            <!-- Exam Date (Optional) -->
+            <div class="input-group">
+                <label for="setup-exam-date">EXAM DATE (Optional)</label>
+                <input 
+                    type="date" 
+                    id="setup-exam-date" 
+                    class="setup-input">
+            </div>
+            
+            <!-- Continue Button -->
+            <button class="setup-btn" id="setup-btn">Continue to Dashboard</button>
+            
+        </div>
+        
     </div>
 </div>

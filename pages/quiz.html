@@ -1,0 +1,89 @@
+<!-- QUIZ SCREEN -->
+<div id="quiz-screen" class="page">
+    
+    <!-- Quiz Header -->
+    <div class="quiz-header">
+        <button class="quiz-exit" id="quiz-exit">✕</button>
+        <div class="quiz-info">
+            <span class="quiz-subject" id="quiz-subject">Mathematics</span>
+            <span class="quiz-progress-text" id="quiz-progress-text">Question 1 of 10</span>
+        </div>
+        <div class="quiz-timer" id="quiz-timer">05:00</div>
+    </div>
+    
+    <!-- Progress Bar -->
+    <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 10%"></div>
+    </div>
+    
+    <!-- Quiz Content -->
+    <div class="quiz-content">
+        
+        <!-- Question Card -->
+        <div class="question-card">
+            <div class="question-number" id="question-number">Question 1</div>
+            <h3 class="question-text" id="question-text">
+                Solve for x: 2x + 5 = 15
+            </h3>
+        </div>
+        
+        <!-- Options -->
+        <div class="options-container" id="options-container">
+            <button class="option-btn" data-option="A">
+                <span class="option-letter">A</span>
+                <span class="option-text">x = 5</span>
+            </button>
+            
+            <button class="option-btn" data-option="B">
+                <span class="option-letter">B</span>
+                <span class="option-text">x = 10</span>
+            </button>
+            
+            <button class="option-btn" data-option="C">
+                <span class="option-letter">C</span>
+                <span class="option-text">x = 7.5</span>
+            </button>
+            
+            <button class="option-btn" data-option="D">
+                <span class="option-letter">D</span>
+                <span class="option-text">x = 15</span>
+            </button>
+        </div>
+        
+    </div>
+    
+    <!-- Quiz Actions -->
+    <div class="quiz-actions">
+        <button class="quiz-action-btn" id="quiz-prev" disabled>
+            ← Previous
+        </button>
+        <button class="quiz-action-btn primary" id="quiz-next">
+            Next →
+        </button>
+    </div>
+    
+    <!-- Explanation Modal (Hidden by default) -->
+    <div class="explanation-modal" id="explanation-modal">
+        <div class="explanation-content">
+            <div class="explanation-header">
+                <div class="explanation-result correct" id="explanation-result">
+                    <span class="result-icon">✓</span>
+                    <span class="result-text">Correct!</span>
+                </div>
+                <button class="explanation-close" id="explanation-close">✕</button>
+            </div>
+            
+            <div class="explanation-body">
+                <h4>Explanation:</h4>
+                <p id="explanation-text">
+                    To solve 2x + 5 = 15:<br>
+                    Subtract 5 from both sides: 2x = 10<br>
+                    Divide both sides by 2: x = 5
+                </p>
+            </div>
+            
+            <button class="explanation-btn" id="explanation-continue">Continue</button>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,243 @@
+/* ==========================================
+   EXAMBOLT - EMAIL VERIFICATION STYLES
+   ========================================== */
+
+#email-verify-screen {
+    background: var(--gray-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.verify-container {
+    width: 100%;
+    max-width: 440px;
+    text-align: center;
+}
+
+/* ========== ICON ========== */
+.verify-icon {
+    margin-bottom: 32px;
+    animation: fadeInScale 0.6s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.icon-circle {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 204, 0.25);
+}
+
+.icon-emoji {
+    font-size: 50px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* ========== TITLE ========== */
+.verify-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 12px;
+    animation: slideUp 0.6s ease-out;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.verify-subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--gray-600);
+    margin-bottom: 40px;
+    animation: slideUp 0.6s ease-out;
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+}
+
+.verify-subtitle strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* ========== OTP CONTAINER ========== */
+.otp-container {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 32px;
+    animation: fadeIn 0.6s ease-out;
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========== OTP INPUTS ========== */
+.otp-input {
+    width: 64px;
+    height: 64px;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--gray-900);
+    transition: all var(--transition-fast);
+    font-family: var(--font-main);
+}
+
+.otp-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0, 0, 204, 0.1);
+    transform: scale(1.05);
+}
+
+.otp-input.filled {
+    border-color: var(--primary);
+    background: rgba(0, 0, 204, 0.05);
+}
+
+.otp-input.error {
+    border-color: var(--error);
+    background: rgba(255, 68, 68, 0.05);
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+
+/* ========== VERIFY BUTTON ========== */
+.verify-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 14px rgba(0, 0, 204, 0.3);
+}
+
+.verify-btn:active {
+    background: var(--primary-dark);
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(0, 0, 204, 0.4);
+}
+
+.verify-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ========== VERIFY ACTIONS ========== */
+.verify-actions {
+    font-size: 14px;
+    color: var(--gray-600);
+    margin-bottom: 12px;
+}
+
+.action-text {
+    margin-right: 4px;
+}
+
+.action-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.action-link:active {
+    color: var(--primary-dark);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 480px) {
+    .otp-input {
+        width: 56px;
+        height: 56px;
+        font-size: 24px;
+    }
+    
+    .otp-container {
+        gap: 8px;
+    }
+    
+    .icon-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .icon-emoji {
+        font-size: 40px;
+    }
+    
+    .verify-title {
+        font-size: 24px;
+    }
+}
+
+/* ========== LOADING STATE ========== */
+.verify-btn.loading {
+    pointer-events: none;
+}
+
+.verify-btn.loading::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 8px;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

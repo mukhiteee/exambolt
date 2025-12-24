@@ -1,0 +1,379 @@
+/* ==========================================
+   EXAMBOLT - PROFILE (REDESIGNED)
+   Matching your exact UI design
+   ========================================== */
+
+#profile-screen {
+    background: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ========== HEADER ========== */
+.profile-header {
+    background: white;
+    padding: 20px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.profile-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1A1A1A;
+}
+
+/* ========== CONTENT ========== */
+.profile-content {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 20px 100px;
+}
+
+/* ========== USER INFO CARD ========== */
+.user-info-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 16px;
+}
+
+.user-avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 16px;
+}
+
+.user-avatar-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 4px;
+}
+
+.user-institution {
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 12px;
+}
+
+.user-badges {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.badge {
+    padding: 6px 12px;
+    background: #E8F0FF;
+    color: #0000CC;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ========== ACTION BUTTONS ========== */
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.action-btn {
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-btn.secondary {
+    background: white;
+    color: #1A1A1A;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.action-btn:active {
+    transform: scale(0.98);
+}
+
+/* ========== CGPA CARD ========== */
+.cgpa-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 16px;
+}
+
+.cgpa-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #999999;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.cgpa-value {
+    font-size: 48px;
+    font-weight: 800;
+    color: #0000CC;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.cgpa-class {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #C8E6C9;
+    color: #2E7D32;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ========== ADD GRADE CARD ========== */
+.add-grade-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 16px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 16px;
+}
+
+.grade-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #E5E5E5;
+    border-radius: 12px;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.add-grade-btn {
+    width: 100%;
+    padding: 14px;
+    background: #0000CC;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* ========== PREMIUM CARD ========== */
+.premium-card {
+    background: linear-gradient(135deg, #0000CC 0%, #0000AA 100%);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 204, 0.25);
+}
+
+.premium-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.premium-info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: white;
+}
+
+.premium-icon {
+    font-size: 28px;
+}
+
+.premium-info h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.premium-info p {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.manage-btn {
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ========== WARNING CARD ========== */
+.warning-card {
+    background: #FFF3E0;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.warning-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.warning-text h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #E65100;
+    margin-bottom: 4px;
+}
+
+.warning-text p {
+    font-size: 13px;
+    color: #666666;
+    line-height: 1.5;
+}
+
+/* ========== MENU LIST ========== */
+.menu-list {
+    background: white;
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 16px;
+}
+
+.menu-item {
+    width: 100%;
+    padding: 16px 12px;
+    background: none;
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.menu-item:active {
+    background: #F5F5F5;
+}
+
+.menu-icon {
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+}
+
+.menu-text {
+    flex: 1;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1A1A1A;
+}
+
+.menu-arrow {
+    font-size: 16px;
+    color: #CCCCCC;
+}
+
+/* ========== TOGGLE SWITCH ========== */
+.toggle-switch {
+    position: relative;
+    width: 48px;
+    height: 28px;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #CCCCCC;
+    border-radius: 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-slider:before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background: #0000CC;
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(20px);
+}
+
+/* ========== LOGOUT BUTTON ========== */
+.logout-btn {
+    width: 100%;
+    padding: 16px;
+    background: white;
+    border: 2px solid #FF4444;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FF4444;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.logout-btn:active {
+    background: #FF4444;
+    color: white;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 480px) {
+    .profile-content {
+        padding: 16px 16px 100px;
+    }
+}

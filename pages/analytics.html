@@ -1,0 +1,108 @@
+<!-- ANALYTICS SCREEN -->
+<div id="analytics-screen" class="page">
+    
+    <!-- Header -->
+    <div class="analytics-header">
+        <h2 class="analytics-title">Analytics</h2>
+        <button class="filter-btn">🔽</button>
+    </div>
+    
+    <!-- Analytics Content -->
+    <div class="analytics-content">
+        
+        <!-- Last Exam Result -->
+        <div class="exam-result-card">
+            <p class="result-label">LAST EXAM RESULT</p>
+            <div class="result-header">
+                <h3 class="result-title">Mathematics 101</h3>
+                <div class="grade-badge">A</div>
+            </div>
+            <div class="result-stats">
+                <div class="result-stat">
+                    <p class="stat-label">Score</p>
+                    <p class="stat-value">92/100</p>
+                </div>
+                <div class="result-stat">
+                    <p class="stat-label">Time</p>
+                    <p class="stat-value">45m</p>
+                </div>
+                <div class="result-stat">
+                    <p class="stat-label">Percentile</p>
+                    <p class="stat-value">Top 5%</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Streak & Rank -->
+        <div class="stats-row">
+            <div class="stats-card streak-card">
+                <div class="stats-icon">🔥</div>
+                <div class="stats-info">
+                    <p class="stats-label">Current Streak</p>
+                    <h3 class="stats-value">12 <span>Days</span></h3>
+                </div>
+            </div>
+            
+            <div class="stats-card rank-card">
+                <div class="stats-icon">📊</div>
+                <div class="stats-info">
+                    <p class="stats-label">Global Rank</p>
+                    <h3 class="stats-value">#42 <span>Top 100</span></h3>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Performance History -->
+        <div class="performance-card">
+            <h3 class="section-title">Performance History</h3>
+            <div class="chart-container">
+                <canvas id="performance-chart"></canvas>
+                <!-- Simple SVG chart for now -->
+                <svg viewBox="0 0 400 150" class="performance-graph">
+                    <path d="M 10 100 Q 50 80, 100 70 T 200 60 T 300 50 L 390 20" 
+                          stroke="#0000CC" 
+                          stroke-width="3" 
+                          fill="none"/>
+                    <path d="M 10 100 Q 50 80, 100 70 T 200 60 T 300 50 L 390 20 L 390 150 L 10 150 Z" 
+                          fill="url(#gradient)" 
+                          opacity="0.2"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#0000CC;stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:#0000CC;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item" data-nav="home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </button>
+        
+        <button class="nav-item" data-nav="study">
+            <span class="nav-icon">📚</span>
+            <span class="nav-label">Study</span>
+        </button>
+        
+        <button class="nav-fab" id="fab-button">
+            <span class="fab-icon">+</span>
+        </button>
+        
+        <button class="nav-item active" data-nav="analytics">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Stats</span>
+        </button>
+        
+        <button class="nav-item" data-nav="profile">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Profile</span>
+        </button>
+    </nav>
+    
+</div>

@@ -1,174 +1,158 @@
 // ==========================================
-// EXAMBOLT - ONBOARDING LOGIC
-// Slide navigation, skip, swipe support
+// EXAMBOLT - ROUTER
+// Handles page navigation & loading
 // ==========================================
 
-const Onboarding = {
-    currentSlide: 0,
-    totalSlides: 4,
+const Router = {
+    currentPage: null,
+    currentCSS: null,
     
     /**
-     * Initialize onboarding
+     * Load and show a page (SMOOTH, NO RELOAD!)
      */
-    init() {
+    async showPage(pageName) {
         if (CONFIG.DEBUG) {
-            console.log('📖 Onboarding initialized');
+            console.log(`🧭 Navigating to: ${pageName}`);
         }
         
-        // Small delay to ensure DOM is ready
-        setTimeout(() => {
-            this.setupEventListeners();
-            this.setupSwipeSupport();
-        }, 100);
-    },
-    
-    /**
-     * Setup button event listeners
-     */
-    setupEventListeners() {
-        // Next button
-        const nextBtn = document.getElementById('next-btn');
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => this.nextSlide());
-            if (CONFIG.DEBUG) console.log('✅ Next button bound');
-        }
-        
-        // Skip button
-        const skipBtn = document.getElementById('skip-btn');
-        if (skipBtn) {
-            skipBtn.addEventListener('click', () => this.skip());
-            if (CONFIG.DEBUG) console.log('✅ Skip button bound');
-        }
-        
-        // Dots navigation
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach(dot => {
-            dot.addEventListener('click', (e) => {
-                const index = parseInt(e.target.dataset.index);
-                this.goToSlide(index);
-            });
-        });
-        if (CONFIG.DEBUG) console.log(`✅ ${dots.length} dots bound`);
-    },
-    
-    /**
-     * Next slide
-     */
-    nextSlide() {
-        if (this.currentSlide < this.totalSlides - 1) {
-            this.goToSlide(this.currentSlide + 1);
-        } else {
-            // Last slide - complete onboarding
-            this.complete();
+        try {
+            // 1. Fade out current page
+            await this.fadeOutCurrentPage();
+            
+            // 2. Load new page HTML
+            const html = await this.loadPageHTML(pageName);
+            
+            // 3. Inject into app
+            document.getElementById('app').innerHTML = html;
+            
+            // 4. Load page-specific CSS
+            await this.loadPageCSS(pageName);
+            
+            // 5. Fade in new page
+            this.fadeInPage();
+            
+            // 6. Initialize page-specific JavaScript
+            this.initPageScript(pageName);
+            
+            // 7. Update current page
+            this.currentPage = pageName;
+            
+        } catch (error) {
+            console.error('❌ Router error:', error);
         }
     },
     
     /**
-     * Previous slide
+     * Initialize page-specific JavaScript
      */
-    prevSlide() {
-        if (this.currentSlide > 0) {
-            this.goToSlide(this.currentSlide - 1);
+    initPageScript(pageName) {
+        // Call page-specific init function if it exists
+        if (pageName === 'onboarding' && typeof Onboarding !== 'undefined') {
+            Onboarding.init();
         }
-    },
-    
-    /**
-     * Go to specific slide
-     */
-    goToSlide(index) {
-        if (index === this.currentSlide) return;
         
-        const slides = document.querySelectorAll('.onboarding-slide');
-        const dots = document.querySelectorAll('.dot');
-        const nextBtn = document.getElementById('next-btn');
+        if (pageName === 'auth' && typeof Auth !== 'undefined') {
+            Auth.init();
+        }
         
-        // Update current slide
-        slides[this.currentSlide].classList.remove('active');
-        slides[this.currentSlide].classList.add('prev');
+        if (pageName === 'email-verify' && typeof EmailVerify !== 'undefined') {
+            EmailVerify.init();
+        }
         
-        // Show new slide
-        slides[index].classList.remove('prev');
-        slides[index].classList.add('active');
+        if (pageName === 'profile-setup' && typeof ProfileSetup !== 'undefined') {
+            ProfileSetup.init();
+        }
         
-        // Update dots
-        dots[this.currentSlide].classList.remove('active');
-        dots[index].classList.add('active');
+        if (pageName === 'dashboard' && typeof Dashboard !== 'undefined') {
+            Dashboard.init();
+        }
         
-        // Update current slide index
-        this.currentSlide = index;
+        if (pageName === 'study' && typeof Study !== 'undefined') {
+            Study.init();
+        }
         
-        // Update button text on last slide
-        if (this.currentSlide === this.totalSlides - 1) {
-            nextBtn.textContent = 'Get Started';
-        } else {
-            nextBtn.textContent = 'Next';
+        if (pageName === 'quiz' && typeof Quiz !== 'undefined') {
+            Quiz.init();
+        }
+        
+        if (pageName === 'analytics' && typeof Analytics !== 'undefined') {
+            Analytics.init();
+        }
+        
+        if (pageName === 'profile' && typeof Profile !== 'undefined') {
+            Profile.init();
         }
         
         if (CONFIG.DEBUG) {
-            console.log(`📄 Slide ${this.currentSlide + 1}/${this.totalSlides}`);
+            console.log(`🎯 Initialized ${pageName} script`);
         }
     },
     
     /**
-     * Skip onboarding
+     * Load page HTML from /pages folder
      */
-    skip() {
-        if (CONFIG.DEBUG) {
-            console.log('⏭️ Onboarding skipped');
-        }
-        this.complete();
+    async loadPageHTML(pageName) {
+        const response = await fetch(`pages/${pageName}.html`);
+        if (!response.ok) throw new Error(`Failed to load ${pageName}.html`);
+        return await response.text();
     },
     
     /**
-     * Complete onboarding
+     * Load page-specific CSS dynamically
      */
-    async complete() {
-        if (CONFIG.DEBUG) {
-            console.log('✅ Onboarding completed');
+    async loadPageCSS(pageName) {
+        // Remove previous page CSS
+        if (this.currentCSS) {
+            this.currentCSS.remove();
         }
         
-        // Mark as seen
-        Storage.save('onboarding_seen', true);
+        // Create new link element
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `css/${pageName}.css`;
+        link.id = 'page-css';
         
-        // Navigate to auth screen
-        await Router.showPage('auth');
-    },
-    
-    /**
-     * Setup swipe support for mobile
-     */
-    setupSwipeSupport() {
-        const slidesWrapper = document.querySelector('.slides-wrapper');
-        if (!slidesWrapper) return;
+        // Add to head
+        document.head.appendChild(link);
+        this.currentCSS = link;
         
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        slidesWrapper.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-        
-        slidesWrapper.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            this.handleSwipe(touchStartX, touchEndX);
+        // Wait for CSS to load
+        return new Promise((resolve) => {
+            link.onload = resolve;
+            link.onerror = resolve; // Continue even if CSS fails
         });
     },
     
     /**
-     * Handle swipe gesture
+     * Fade out current page smoothly
      */
-    handleSwipe(startX, endX) {
-        const diff = startX - endX;
-        const threshold = 50; // Minimum swipe distance
-        
-        if (Math.abs(diff) > threshold) {
-            if (diff > 0) {
-                // Swipe left - next slide
-                this.nextSlide();
-            } else {
-                // Swipe right - previous slide
-                this.prevSlide();
+    fadeOutCurrentPage() {
+        return new Promise((resolve) => {
+            const currentPage = document.querySelector('.page.active');
+            
+            if (!currentPage) {
+                resolve();
+                return;
             }
-        }
+            
+            currentPage.classList.add('fade-out');
+            
+            setTimeout(() => {
+                currentPage.classList.remove('active', 'fade-out');
+                resolve();
+            }, 300);
+        });
+    },
+    
+    /**
+     * Fade in new page
+     */
+    fadeInPage() {
+        setTimeout(() => {
+            const newPage = document.querySelector('.page');
+            if (newPage) {
+                newPage.classList.add('active');
+            }
+        }, 50);
     }
 };

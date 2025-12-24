@@ -1,7 +1,113 @@
 <!-- DASHBOARD SCREEN -->
 <div id="dashboard-screen" class="page">
-    <div class="content">
-        <h2>Dashboard</h2>
-        <p>Welcome! Coming soon...</p>
+    
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+        
+        <!-- Header with Greeting -->
+        <div class="dashboard-greeting">
+            <div class="greeting-text">
+                <p class="greeting-label">Good Morning,</p>
+                <h2 class="greeting-name" id="user-name">Alex Student</h2>
+            </div>
+            <div class="profile-avatar" id="profile-avatar">
+                <img src="data:image/svg+xml,%3Csvg width='48' height='48' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='24' cy='24' r='24' fill='%230000CC'/%3E%3Ctext x='24' y='32' text-anchor='middle' fill='white' font-size='20' font-weight='bold'%3EAS%3C/text%3E%3C/svg%3E" alt="Profile">
+            </div>
+        </div>
+        
+        <!-- Stats Cards -->
+        <div class="stats-cards">
+            <div class="stat-card blue-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-value" id="avg-score">85%</div>
+                <div class="stat-label">Avg. Score</div>
+            </div>
+            
+            <div class="stat-card white-card">
+                <div class="stat-icon orange">⚡</div>
+                <div class="stat-value" id="day-streak">12</div>
+                <div class="stat-label">Day Streak</div>
+            </div>
+        </div>
+        
+        <!-- Upcoming Exams -->
+        <div class="section">
+            <div class="section-header">
+                <h3 class="section-title">Upcoming Exams</h3>
+                <a href="#" class="section-link">See all</a>
+            </div>
+            
+            <div class="exam-list">
+                <div class="exam-card">
+                    <div class="exam-date">
+                        <span class="exam-month">OCT</span>
+                        <span class="exam-day">15</span>
+                    </div>
+                    <div class="exam-info">
+                        <h4 class="exam-title">CSC 101 Mid-Semester</h4>
+                        <p class="exam-time">🕐 10:00 AM</p>
+                    </div>
+                    <button class="exam-status registered">Registered</button>
+                </div>
+                
+                <div class="exam-card">
+                    <div class="exam-date">
+                        <span class="exam-month">NOV</span>
+                        <span class="exam-day">02</span>
+                    </div>
+                    <div class="exam-info">
+                        <h4 class="exam-title">MTH 202 Final</h4>
+                        <p class="exam-time">🕐 2:00 PM</p>
+                    </div>
+                    <button class="exam-status register">Register</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Access -->
+        <div class="section">
+            <h3 class="section-title">Quick Access</h3>
+            
+            <div class="quick-access-grid">
+                <div class="quick-card purple-card">
+                    <span class="quick-badge">New</span>
+                    <div class="quick-icon">📖</div>
+                </div>
+                
+                <div class="quick-card white-card">
+                    <div class="quick-icon">🎯</div>
+                    <p class="quick-label">Practice Exam</p>
+                </div>
+            </div>
+        </div>
+        
     </div>
+    
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-nav="home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </button>
+        
+        <button class="nav-item" data-nav="study">
+            <span class="nav-icon">📚</span>
+            <span class="nav-label">Study</span>
+        </button>
+        
+        <button class="nav-fab" id="fab-button">
+            <span class="fab-icon">+</span>
+        </button>
+        
+        <button class="nav-item" data-nav="analytics">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Stats</span>
+        </button>
+        
+        <button class="nav-item" data-nav="profile">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Profile</span>
+        </button>
+    </nav>
+    
 </div>

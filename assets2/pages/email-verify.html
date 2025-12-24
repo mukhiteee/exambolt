@@ -1,0 +1,65 @@
+<!-- EMAIL VERIFICATION SCREEN -->
+<div id="email-verify-screen" class="page">
+    <div class="verify-container">
+        
+        <!-- Icon -->
+        <div class="verify-icon">
+            <div class="icon-circle">
+                <span class="icon-emoji">📧</span>
+            </div>
+        </div>
+        
+        <!-- Title -->
+        <h1 class="verify-title">Verify Your Email</h1>
+        <p class="verify-subtitle">
+            We sent a 4-digit code to<br>
+            <strong id="verify-email">your@email.com</strong>
+        </p>
+        
+        <!-- OTP Inputs -->
+        <div class="otp-container">
+            <input type="text" 
+                   class="otp-input" 
+                   maxlength="1" 
+                   data-index="0" 
+                   inputmode="numeric" 
+                   pattern="[0-9]"
+                   autocomplete="one-time-code">
+            <input type="text" 
+                   class="otp-input" 
+                   maxlength="1" 
+                   data-index="1" 
+                   inputmode="numeric" 
+                   pattern="[0-9]"
+                   autocomplete="one-time-code">
+            <input type="text" 
+                   class="otp-input" 
+                   maxlength="1" 
+                   data-index="2" 
+                   inputmode="numeric" 
+                   pattern="[0-9]"
+                   autocomplete="one-time-code">
+            <input type="text" 
+                   class="otp-input" 
+                   maxlength="1" 
+                   data-index="3" 
+                   inputmode="numeric" 
+                   pattern="[0-9]"
+                   autocomplete="one-time-code">
+        </div>
+        
+        <!-- Verify Button -->
+        <button class="verify-btn" id="verify-btn">Verify Code</button>
+        
+        <!-- Actions -->
+        <div class="verify-actions">
+            <span class="action-text">Didn't receive the code?</span>
+            <a href="#" id="resend-code" class="action-link">Resend</a>
+        </div>
+        
+        <div class="verify-actions">
+            <a href="#" id="change-email" class="action-link">Change Email</a>
+        </div>
+        
+    </div>
+</div>

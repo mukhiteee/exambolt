@@ -1,0 +1,66 @@
+<!-- AUTH SCREEN (Login/Signup) -->
+<div id="auth-screen" class="page">
+    <div class="auth-container">
+        
+        <!-- Logo -->
+        <div class="auth-logo">
+            <div class="logo-circle">
+                <svg class="logo-bolt" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" fill="white" stroke="white" stroke-width="1.5"/>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Title -->
+        <h1 class="auth-title" id="auth-title">Create Account</h1>
+        <p class="auth-subtitle" id="auth-subtitle">Join ExamBolt today</p>
+        
+        <!-- Auth Card -->
+        <div class="auth-card">
+            
+            <!-- Email/Phone Input -->
+            <div class="input-group">
+                <label for="auth-email">EMAIL OR PHONE</label>
+                <input 
+                    type="text" 
+                    id="auth-email" 
+                    class="auth-input" 
+                    placeholder="you@example.com or +234..."
+                    autocomplete="email">
+            </div>
+            
+            <!-- Password Input -->
+            <div class="input-group">
+                <label for="auth-password">PASSWORD</label>
+                <input 
+                    type="password" 
+                    id="auth-password" 
+                    class="auth-input" 
+                    placeholder="••••••••"
+                    autocomplete="new-password">
+            </div>
+            
+            <!-- Confirm Password (Signup only) -->
+            <div class="input-group" id="confirm-password-group">
+                <label for="auth-confirm-password">CONFIRM PASSWORD</label>
+                <input 
+                    type="password" 
+                    id="auth-confirm-password" 
+                    class="auth-input" 
+                    placeholder="••••••••"
+                    autocomplete="new-password">
+            </div>
+            
+            <!-- Continue Button -->
+            <button class="auth-btn" id="auth-btn">Continue</button>
+            
+            <!-- Toggle Login/Signup -->
+            <p class="auth-toggle">
+                <span id="toggle-text">Already have an account?</span>
+                <a href="#" id="toggle-link">Log In</a>
+            </p>
+            
+        </div>
+        
+    </div>
+</div>

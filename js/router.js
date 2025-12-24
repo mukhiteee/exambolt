@@ -59,6 +59,30 @@ const Router = {
             EmailVerify.init();
         }
         
+        if (pageName === 'profile-setup' && typeof ProfileSetup !== 'undefined') {
+            ProfileSetup.init();
+        }
+        
+        if (pageName === 'dashboard' && typeof Dashboard !== 'undefined') {
+            Dashboard.init();
+        }
+        
+        if (pageName === 'study' && typeof Study !== 'undefined') {
+            Study.init();
+        }
+        
+        if (pageName === 'quiz' && typeof Quiz !== 'undefined') {
+            Quiz.init();
+        }
+        
+        if (pageName === 'analytics' && typeof Analytics !== 'undefined') {
+            Analytics.init();
+        }
+        
+        if (pageName === 'profile' && typeof Profile !== 'undefined') {
+            Profile.init();
+        }
+        
         if (CONFIG.DEBUG) {
             console.log(`🎯 Initialized ${pageName} script`);
         }

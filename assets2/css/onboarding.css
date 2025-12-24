@@ -1,0 +1,263 @@
+/* ==========================================
+   EXAMBOLT - ONBOARDING STYLES
+   ========================================== */
+
+#onboarding-screen {
+    background: var(--gray-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.onboarding-container {
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+/* ========== SKIP BUTTON ========== */
+.skip-btn {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--gray-600);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+    z-index: 10;
+}
+
+.skip-btn:active {
+    color: var(--primary);
+    transform: scale(0.95);
+}
+
+/* ========== SLIDES WRAPPER ========== */
+.slides-wrapper {
+    position: relative;
+    min-height: 450px;
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+/* ========== SLIDES ========== */
+.onboarding-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all var(--transition-slow);
+    pointer-events: none;
+}
+
+.onboarding-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+.onboarding-slide.prev {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* ========== SLIDE ICON ========== */
+.slide-icon {
+    font-size: 120px;
+    margin-bottom: 40px;
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ========== SLIDE TITLE ========== */
+.slide-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    animation: slideUp 0.6s ease-out;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== SLIDE TEXT ========== */
+.slide-text {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--gray-600);
+    padding: 0 20px;
+    animation: fadeIn 0.6s ease-out;
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========== DOTS CONTAINER ========== */
+.dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+/* ========== DOTS ========== */
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gray-200);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.dot.active {
+    width: 32px;
+    border-radius: 4px;
+    background: var(--primary);
+}
+
+.dot:not(.active):active {
+    transform: scale(1.2);
+}
+
+/* ========== NEXT BUTTON ========== */
+.next-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 14px rgba(0, 0, 204, 0.3);
+}
+
+.next-btn:active {
+    background: var(--primary-dark);
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(0, 0, 204, 0.4);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 480px) {
+    .slide-icon {
+        font-size: 100px;
+        margin-bottom: 32px;
+    }
+    
+    .slide-title {
+        font-size: 28px;
+    }
+    
+    .slide-text {
+        font-size: 16px;
+        padding: 0 10px;
+    }
+    
+    .slides-wrapper {
+        min-height: 400px;
+    }
+}
+
+/* ========== ANIMATION CLASSES ========== */
+/* These are added dynamically by JavaScript */
+.onboarding-slide.slide-out-left {
+    animation: slideOutLeft 0.3s ease forwards;
+}
+
+.onboarding-slide.slide-out-right {
+    animation: slideOutRight 0.3s ease forwards;
+}
+
+.onboarding-slide.slide-in-left {
+    animation: slideInLeft 0.3s ease forwards;
+}
+
+.onboarding-slide.slide-in-right {
+    animation: slideInRight 0.3s ease forwards;
+}
+
+@keyframes slideOutLeft {
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slideOutRight {
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

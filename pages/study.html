@@ -1,0 +1,166 @@
+<!-- STUDY HUB SCREEN -->
+<div id="study-screen" class="page">
+    
+    <!-- Header -->
+    <div class="study-header">
+        <h2 class="study-title">Study Hub</h2>
+    </div>
+    
+    <!-- Tab Navigation -->
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="courses">
+            <span class="tab-icon">📚</span>
+            Courses
+        </button>
+        <button class="tab-btn" data-tab="practice">
+            <span class="tab-icon">🎯</span>
+            Practice
+        </button>
+        <button class="tab-btn" data-tab="flashcards">
+            <span class="tab-icon">📇</span>
+            Flashcards
+        </button>
+        <button class="tab-btn" data-tab="notes">
+            <span class="tab-icon">📝</span>
+            Notes
+        </button>
+    </div>
+    
+    <!-- Tab Content -->
+    <div class="tab-content">
+        
+        <!-- COURSES TAB -->
+        <div class="tab-pane active" id="tab-courses">
+            <div class="courses-list">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-code">CSC 101</span>
+                        <button class="course-menu">⋮</button>
+                    </div>
+                    <h3 class="course-title">Intro to Computer Science</h3>
+                    <div class="course-meta">
+                        <span>📄 12 Lessons</span>
+                        <span>📇 34 Flashcards</span>
+                    </div>
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-code">MTH 202</span>
+                        <button class="course-menu">⋮</button>
+                    </div>
+                    <h3 class="course-title">Linear Algebra</h3>
+                    <div class="course-meta">
+                        <span>📄 12 Lessons</span>
+                        <span>📇 34 Flashcards</span>
+                    </div>
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-code">PHY 104</span>
+                        <button class="course-menu">⋮</button>
+                    </div>
+                    <h3 class="course-title">General Physics</h3>
+                    <div class="course-meta">
+                        <span>📄 12 Lessons</span>
+                        <span>📇 34 Flashcards</span>
+                    </div>
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PRACTICE TAB -->
+        <div class="tab-pane" id="tab-practice">
+            <div class="practice-list">
+                <div class="practice-card">
+                    <div class="practice-info">
+                        <h3>Quick Quiz</h3>
+                        <p>10 Questions • Random Topics</p>
+                    </div>
+                    <button class="practice-btn">Start</button>
+                </div>
+                
+                <div class="practice-card">
+                    <div class="practice-info">
+                        <h3>Mock Exam</h3>
+                        <p>60 Mins • Exam Simulation</p>
+                    </div>
+                    <button class="practice-btn">Setup</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FLASHCARDS TAB -->
+        <div class="tab-pane" id="tab-flashcards">
+            <div class="ai-generator-card">
+                <div class="ai-icon">✨</div>
+                <h3>AI Flashcard Generator</h3>
+                <p>Enter a topic and let AI create a study deck for you.</p>
+                <div class="ai-input-group">
+                    <input type="text" placeholder="e.g., Photosynthesis" class="ai-input">
+                    <button class="ai-create-btn">Create</button>
+                </div>
+            </div>
+            
+            <div class="empty-state">
+                <div class="empty-icon">📇</div>
+                <p>No flashcards yet. Generate some!</p>
+            </div>
+        </div>
+        
+        <!-- NOTES TAB -->
+        <div class="tab-pane" id="tab-notes">
+            <div class="notes-grid">
+                <button class="new-note-card">
+                    <div class="new-note-icon">+</div>
+                    <p>New Note</p>
+                </button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item" data-nav="home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </button>
+        
+        <button class="nav-item active" data-nav="study">
+            <span class="nav-icon">📚</span>
+            <span class="nav-label">Study</span>
+        </button>
+        
+        <button class="nav-fab" id="fab-button">
+            <span class="fab-icon">+</span>
+        </button>
+        
+        <button class="nav-item" data-nav="analytics">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Stats</span>
+        </button>
+        
+        <button class="nav-item" data-nav="profile">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Profile</span>
+        </button>
+    </nav>
+    
+</div>
